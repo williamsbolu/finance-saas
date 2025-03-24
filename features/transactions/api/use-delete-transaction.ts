@@ -1,5 +1,5 @@
 import { toast } from "sonner";
-import { InferRequestType, InferResponseType } from "hono";
+import { InferResponseType } from "hono";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 import { client } from "@/lib/hono";
@@ -25,7 +25,7 @@ export const useDeleteTransaction = (id?: string) => {
       queryClient.invalidateQueries({ queryKey: ["transaction", { id }] });
       queryClient.invalidateQueries({ queryKey: ["transactions"] });
 
-      // TODO: Invalidate summary
+      queryClient.invalidateQueries({ queryKey: ["summary"] });
     },
     onError: (err) => {
       toast.error("Failed to delete transaction");
