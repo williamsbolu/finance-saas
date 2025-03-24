@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import { HeaderLogo } from "@/components/header-logo";
 import { Navigation } from "@/components/navigation";
 import { UserButton, ClerkLoaded, ClerkLoading } from "@clerk/nextjs";
@@ -23,7 +24,9 @@ export const Header = () => {
         </div>
 
         <WelcomeMsg />
-        <Filters />
+        <Suspense fallback={<div>Loading...</div>}>
+          <Filters />
+        </Suspense>
       </div>
     </header>
   );
