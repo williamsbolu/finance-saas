@@ -24,7 +24,9 @@ export const Header = () => {
         </div>
 
         <WelcomeMsg />
-        <Suspense fallback={<div>Loading...</div>}>
+        <Suspense
+          fallback={<div className="animate-pulse text-white">Loading...</div>}
+        >
           <Filters />
         </Suspense>
       </div>
